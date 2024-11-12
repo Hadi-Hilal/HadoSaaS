@@ -1,0 +1,30 @@
+{
+    "name": "Hadi/core",
+    "description": "",
+    "authors": [
+        {
+            "name": "Hadi Hilal",
+            "email": "hadi-hilal@hotmail.com"
+        }
+    ],
+    "extra": {
+        "laravel": {
+            "providers": [],
+            "aliases": {
+
+            }
+        }
+    },
+    "autoload": {
+        "psr-4": {
+            "Modules\\Core\\": "app/",
+            "Modules\\Core\\Database\\Factories\\": "database/factories/",
+            "Modules\\Core\\Database\\Seeders\\": "database/seeders/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Modules\\Core\\Tests\\": "tests/"
+        }
+    }
+}

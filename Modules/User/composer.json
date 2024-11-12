@@ -1,0 +1,32 @@
+{
+    "name": "hadi/user",
+    "description": "",
+    "authors": [
+        {
+            "name": "Hadi Hilal",
+            "email": "hadi-hilal@hotmail.com"
+        }
+    ],
+    "extra": {
+        "laravel": {
+            "providers": [],
+            "aliases": {
+            }
+        }
+    },
+    "autoload": {
+        "psr-4": {
+            "Modules\\User\\": "app/",
+            "Modules\\User\\Database\\Factories\\": "database/factories/",
+            "Modules\\User\\Database\\Seeders\\": "database/seeders/"
+        },
+        "files": [
+            "app/Helpers/auth.php"
+        ]
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Modules\\User\\Tests\\": "tests/"
+        }
+    }
+}
