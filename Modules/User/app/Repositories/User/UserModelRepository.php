@@ -3,17 +3,24 @@
 namespace Modules\User\app\Repositories\User;
 
 use App\Models\User;
+use Illuminate\Pagination\LengthAwarePaginator;
 use Illuminate\Support\Facades\Hash;
 use Modules\Core\Traits\ExceptionHandlerTrait;
 use Modules\Core\Traits\FileTrait;
 use Modules\User\app\Data\UserData;
 
-class UserModelRepository implements UserRepository
-{
+class UserModelRepository implements UserRepository {
     use ExceptionHandlerTrait, FileTrait;
 
-    public function store(UserData $userData): ?User
-    {
+    public function all(string $type): LengthAwarePaginator {
+        return User::where('type', $type)->paginate(config('core.page_size'));
+    }
+
+    public function find(int $id): ?User {
+        return User::findOrFail($id);
+    }
+
+    public function store(UserData $userData): ?User {
         return $this->execute(function () use ($userData) {
             $user = User::create([
                 'name' => $userData->name,
@@ -27,8 +34,7 @@ class UserModelRepository implements UserRepository
         });
     }
 
-    public function update(UserData $userData, User $user): ?User
-    {
+    public function update(UserData $userData, User $user): ?User {
         return $this->execute(function () use ($userData, $user) {
             $updateData = [
                 'name' => $userData->name,
@@ -46,8 +52,7 @@ class UserModelRepository implements UserRepository
         });
     }
 
-    public function delete(User $user): bool
-    {
+    public function delete(User $user): bool {
         return $this->execute(function () use ($user) {
             if ($user->img) {
                 $this->deleteFile($user->img);

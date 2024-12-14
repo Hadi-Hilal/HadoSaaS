@@ -1,6 +1,6 @@
 @section('title' , __('Dashboard'))
 @section('toolbar')
-        @php
+    @php
         $breadcrumbItems = [
             ['label' => 'Dashboard'],
 

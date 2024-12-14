@@ -18,7 +18,7 @@ return [
     |
     */
 
-    'default' => env('LOG_CHANNEL', 'stack'),
+    'default' => env('LOG_CHANNEL', 'database'),
 
     /*
     |--------------------------------------------------------------------------
@@ -58,6 +58,11 @@ return [
             'ignore_exceptions' => false,
         ],
 
+        'database' => [
+            'driver' => 'custom',
+            'via' => danielme85\LaravelLogToDB\LogToDbHandler::class,
+            'name' => 'Basic DB Logging'
+        ],
         'single' => [
             'driver' => 'single',
             'path' => storage_path('logs/laravel.log'),

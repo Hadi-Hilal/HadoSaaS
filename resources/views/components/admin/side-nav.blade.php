@@ -70,7 +70,7 @@
                 </a>
             </div>
 
-             <div class="menu-item">
+            <div class="menu-item">
                 <a class="menu-link {{ isset($active['users']) ? 'active' : '' }}"
                    href="{{ route('admin.users.index') }}">
                             <span class="menu-bullet">
@@ -82,5 +82,16 @@
 
         </div>
 
+    </div>
+@endcan
+@can('Logs Management')
+    <div class="menu-item">
+        <a class="menu-link {{ isset($active['logs']) ? 'active' : '' }}"
+           href="{{ route('admin.logs.index') }}">
+                <span class="menu-icon">
+                    <i class="bi bi-window-stack"></i>
+                </span>
+            <span class="menu-title">{{ __('Logs & Bugs') }}</span>
+        </a>
     </div>
 @endcan

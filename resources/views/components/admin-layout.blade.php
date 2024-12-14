@@ -502,6 +502,7 @@ Author: Hadi Hilal
 
 </script>
 @yield('js')
+@stack('scripts')
 <!--end::Javascript-->
 </body>
 <!--end::Body-->

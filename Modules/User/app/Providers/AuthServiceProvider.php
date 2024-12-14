@@ -3,29 +3,28 @@
 namespace Modules\User\Providers;
 
 use Illuminate\Support\ServiceProvider;
+use Inertia\Inertia;
 use Laravel\Fortify\Fortify;
 
-class AuthServiceProvider extends ServiceProvider
-{
+class AuthServiceProvider extends ServiceProvider {
     /**
      * Register the service provider.
      */
-    public function register(): void
-    {
+    public function register(): void {
         Fortify::loginView(function () {
-            return view('user::auth.login');
+            return Inertia::render('User::Auth/Login');
         });
 
         Fortify::registerView(function () {
-            return view('user::auth.register');
+            return Inertia::render('User::Auth/Register');
         });
 
         Fortify::requestPasswordResetLinkView(function () {
-            return view('user::auth.forgot-password');
+             return Inertia::render('User::Auth/ForgotPassword');
         });
 
         Fortify::resetPasswordView(function () {
-            return view('user::auth.reset-password');
+             return Inertia::render('User::Auth/ResetPassword');
         });
 
     }
@@ -33,8 +32,7 @@ class AuthServiceProvider extends ServiceProvider
     /**
      * Get the services provided by the provider.
      */
-    public function provides(): array
-    {
+    public function provides(): array {
         return [];
     }
 }

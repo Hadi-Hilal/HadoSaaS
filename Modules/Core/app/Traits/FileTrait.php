@@ -7,8 +7,7 @@ use Illuminate\Support\Facades\Storage;
 use Intervention\Image\Laravel\Facades\Image;
 use Symfony\Component\HttpFoundation\File\Exception\FileException;
 
-trait FileTrait
-{
+trait FileTrait {
     /**
      * Uploads a file or image to the specified directory.
      */
@@ -19,8 +18,7 @@ trait FileTrait
         ?string      $old = null,
         ?int         $width = null,
         string       $disk = 'public'
-    ): ?string
-    {
+    ): ?string {
         // Validate the file
         if (!$this->isValidFile($file)) {
             return null;
@@ -44,16 +42,15 @@ trait FileTrait
         if ($width) {
             $image->resize($width);
         }
-        Storage::disk($disk)->put($dir . '/' . $filename, (string)$image->encode());
+        Storage::disk($disk)->put($dir.'/'.$filename, (string) $image->encode());
 
-        return $dir . '/' . $filename;
+        return $dir.'/'.$filename;
     }
 
     /**
      * Validates if a file is acceptable for upload.
      */
-    private function isValidFile(UploadedFile $file): bool
-    {
+    private function isValidFile(UploadedFile $file): bool {
         if (!$file->isValid()) {
             session()->flushMessage(false, __('The selected file is not valid.'));
             return false;
@@ -71,8 +68,7 @@ trait FileTrait
     /**
      * Deletes a file from the specified disk.
      */
-    public function deleteFile(string $filename, string $disk = 'public'): void
-    {
+    public function deleteFile(string $filename, string $disk = 'public'): void {
         try {
             Storage::disk($disk)->delete($filename);
         } catch (FileException $exception) {
@@ -83,20 +79,18 @@ trait FileTrait
     /**
      * Generates a sanitized, secure filename.
      */
-    private function generateFilename(UploadedFile $file, ?string $name = null): string
-    {
+    private function generateFilename(UploadedFile $file, ?string $name = null): string {
         $originalName = pathinfo($file->getClientOriginalName(), PATHINFO_FILENAME);
         $sanitizedOriginalName = preg_replace('/[^a-zA-Z0-9_\-]/', '_', $originalName);
-        $hash = md5($sanitizedOriginalName . time());
+        $hash = md5($sanitizedOriginalName.time());
 
-        return ($name ?? $hash) . '.' . $file->getClientOriginalExtension();
+        return ($name ?? $hash).'.'.$file->getClientOriginalExtension();
     }
 
     /**
      * Deletes an entire directory from the specified disk.
      */
-    public function deleteDir(string $dir, string $disk = 'public'): void
-    {
+    public function deleteDir(string $dir, string $disk = 'public'): void {
         try {
             Storage::disk($disk)->deleteDirectory($dir);
         } catch (FileException $exception) {

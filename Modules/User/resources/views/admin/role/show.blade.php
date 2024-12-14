@@ -1,5 +1,3 @@
-
-
 @section('title' , __('View Role Details'))
 
 @section('toolbar')

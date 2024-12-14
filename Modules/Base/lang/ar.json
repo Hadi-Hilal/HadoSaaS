@@ -1,5 +1,5 @@
 {
-    "Name" : "الاسم",
+    "Name": "الاسم",
     "Language": "اللغة",
     "All rights are reserved": "جميع الحقوق محفوظة",
     "Developed By Hadi Hilal": "تم تطويره بواسطة هادي هلال",
@@ -84,6 +84,10 @@
     "Form has been successfully submitted!": "تم إرسال النموذج بنجاح!",
     "The field must be 3 characters at least": "يجب أن يتكون الحقل من 3 أحرف على الأقل",
     "Personal Image Field Is Required": "حقل الصورة الشخصية مطلوب",
-    "Are you sure you want to delete it?" : "هل أنت متأكد أنك تريد حذفه؟",
-    "Home" : "الصفحة الرئيسية"
+    "Are you sure you want to delete it?": "هل أنت متأكد أنك تريد حذفه؟",
+    "Home": "الصفحة الرئيسية",
+    "Logs & Bugs": "السجلات والأخطاء",
+    "Log Code": "رمز السجل",
+    "Log title": "عنوان السجل",
+    "Logged At": "سجل في"
 }

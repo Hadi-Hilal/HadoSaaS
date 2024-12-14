@@ -1,9 +1,11 @@
-@props([ 'model' ,'dataTable' => true, 'class' => null, 'formUrl' => null, 'search','title'])
+@props([ 'model' ,'dataTable' => true, 'class' => null, 'formUrl' => null, 'search' => null,'title' => null])
 <div class="card">
 
     <div class="card-header border-0 pt-6">
+        @if($search || $title)
+
         <div class="card-title">
-            @if(isset($search))
+            @if($search)
                 <div class="d-flex align-items-center position-relative my-1">
                     <i class="ki-duotone ki-magnifier fs-3 position-absolute ms-5">
                         <span class="path1"></span>
@@ -14,12 +16,16 @@
                            placeholder="{{__($search)}}"/>
                 </div>
             @endif
-            @if(isset($title))
+            @if($title)
                 <h2>{{$title}}</h2>
             @endif
         </div>
-        <div class="card-toolbar">
-            @if($formUrl)
+        @elseif(!$search && !$title && $formUrl)
+            <div></div>
+          @endif
+        @if($formUrl)
+            <div class="card-toolbar">
+
                 <div class="d-flex justify-content-end" data-kt-comp-table-toolbar="base"></div>
                 <div class="d-flex justify-content-end align-items-center d-none"
                      data-kt-comp-table-toolbar="selected">
@@ -30,8 +36,9 @@
                             data-kt-comp-table-toolbar="delete_selected">{{__('Delete Selected')}}
                     </button>
                 </div>
-            @endif
-        </div>
+
+            </div>
+        @endif
     </div>
 
     @if($formUrl)
@@ -58,7 +65,7 @@
 </div>
 
 
-@if(isset($dataTable))
+@if($dataTable)
     @push('scripts')
         <script>
             $(document).ready(function () {

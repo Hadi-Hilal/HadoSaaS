@@ -6,8 +6,7 @@ use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\ServiceProvider;
 use Nwidart\Modules\Traits\PathNamespace;
 
-class BaseServiceProvider extends ServiceProvider
-{
+class BaseServiceProvider extends ServiceProvider {
     use PathNamespace;
 
     protected string $name = 'Base';
@@ -17,8 +16,7 @@ class BaseServiceProvider extends ServiceProvider
     /**
      * Boot the application events.
      */
-    public function boot(): void
-    {
+    public function boot(): void {
         $this->registerCommands();
         $this->registerCommandSchedules();
         $this->registerTranslations();
@@ -28,27 +26,16 @@ class BaseServiceProvider extends ServiceProvider
     }
 
     /**
-     * Register the service provider.
-     */
-    public function register(): void
-    {
-        $this->app->register(EventServiceProvider::class);
-        $this->app->register(RouteServiceProvider::class);
-    }
-
-    /**
      * Register commands in the format of Command::class
      */
-    protected function registerCommands(): void
-    {
+    protected function registerCommands(): void {
         // $this->commands([]);
     }
 
     /**
      * Register command Schedules.
      */
-    protected function registerCommandSchedules(): void
-    {
+    protected function registerCommandSchedules(): void {
         // $this->app->booted(function () {
         //     $schedule = $this->app->make(Schedule::class);
         //     $schedule->command('inspire')->hourly();
@@ -58,8 +45,7 @@ class BaseServiceProvider extends ServiceProvider
     /**
      * Register translations.
      */
-    public function registerTranslations(): void
-    {
+    public function registerTranslations(): void {
         $langPath = resource_path('lang/modules/'.$this->nameLower);
 
         if (is_dir($langPath)) {
@@ -74,8 +60,7 @@ class BaseServiceProvider extends ServiceProvider
     /**
      * Register config.
      */
-    protected function registerConfig(): void
-    {
+    protected function registerConfig(): void {
         $this->publishes([module_path($this->name, 'config/config.php') => config_path($this->nameLower.'.php')], 'config');
         $this->mergeConfigFrom(module_path($this->name, 'config/config.php'), $this->nameLower);
     }
@@ -83,8 +68,7 @@ class BaseServiceProvider extends ServiceProvider
     /**
      * Register views.
      */
-    public function registerViews(): void
-    {
+    public function registerViews(): void {
         $viewPath = resource_path('views/modules/'.$this->nameLower);
         $sourcePath = module_path($this->name, 'resources/views');
 
@@ -96,16 +80,7 @@ class BaseServiceProvider extends ServiceProvider
         Blade::componentNamespace($componentNamespace, $this->nameLower);
     }
 
-    /**
-     * Get the services provided by the provider.
-     */
-    public function provides(): array
-    {
-        return [];
-    }
-
-    private function getPublishableViewPaths(): array
-    {
+    private function getPublishableViewPaths(): array {
         $paths = [];
         foreach (config('view.paths') as $path) {
             if (is_dir($path.'/modules/'.$this->nameLower)) {
@@ -114,5 +89,20 @@ class BaseServiceProvider extends ServiceProvider
         }
 
         return $paths;
+    }
+
+    /**
+     * Register the service provider.
+     */
+    public function register(): void {
+        $this->app->register(EventServiceProvider::class);
+        $this->app->register(RouteServiceProvider::class);
+    }
+
+    /**
+     * Get the services provided by the provider.
+     */
+    public function provides(): array {
+        return [];
     }
 }

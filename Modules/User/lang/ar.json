@@ -1,6 +1,6 @@
 {
-    "HR" : "الموارد البشرية",
-    "Login" : "تسجيل الدخول",
+    "HR": "الموارد البشرية",
+    "Login": "تسجيل الدخول",
     "Not Active": "غير نشط",
     "Sign Out": "تسجيل الخروج",
     "Sign In": "تسجيل الدخول",
@@ -39,15 +39,15 @@
     "Users Assigned": "المستخدمون المعينون",
     "Select All": "تحديد الكل",
     "The role name is required": "اسم الدور مطلوب",
-    "Staffs" : "المسؤولين",
-    "Search In Staffs" : "البحث في المسؤولين",
+    "Staffs": "المسؤولين",
+    "Search In Staffs": "البحث في المسؤولين",
     "Add New Staff": "إضافة مسؤول جديد",
     "Edit Staff": "تعديل المسؤول",
-    "Users" : "المستخدمين",
+    "Users": "المستخدمين",
     "Search In Users": "البحث في المستخدمين",
     "Add New User": "إضافة لمستخدم جديد",
     "Edit User": "تعديل اللمستخدم",
-
-    "Settings Management" : "إدارة الإعدادات",
-    "Hr Management": "إدارة الموارد البشرية"
+    "Settings Management": "إدارة الإعدادات",
+    "Hr Management": "إدارة الموارد البشرية",
+    "Logs Management": "إدارة السجلات"
 }

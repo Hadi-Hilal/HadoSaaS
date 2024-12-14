@@ -1,13 +1,13 @@
-@section('title' , __('Roles'))
+@section('title' , __('Website Configurations'))
 
 @section('toolbar')
     @php
         $breadcrumbItems = [
             ['label' => 'Dashboard', 'url' => route('admin.dashboard.index')],
-            ['label' => 'Roles List'],
+            ['label' => 'Website Configurations'],
         ];
     @endphp
-    <x-admin.breadcrumb :pageTitle="__('Roles')" :breadcrumbItems="$breadcrumbItems"/>
+    <x-admin.breadcrumb :pageTitle="__('Website Configurations')" :breadcrumbItems="$breadcrumbItems"/>
     <div class="d-flex align-items-center gap-2 gap-lg-3"></div>
 @endsection
 
