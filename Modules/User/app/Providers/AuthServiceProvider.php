@@ -20,11 +20,11 @@ class AuthServiceProvider extends ServiceProvider {
         });
 
         Fortify::requestPasswordResetLinkView(function () {
-             return Inertia::render('User::Auth/ForgotPassword');
+            return Inertia::render('User::Auth/ForgotPassword');
         });
 
         Fortify::resetPasswordView(function () {
-             return Inertia::render('User::Auth/ResetPassword');
+            return Inertia::render('User::Auth/ResetPassword');
         });
 
     }

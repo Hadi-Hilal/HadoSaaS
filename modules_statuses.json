@@ -1,5 +1,7 @@
 {
     "Core": true,
     "User": true,
-    "Base": true
+    "Base": true,
+    "Cms": true,
+    "Support": true
 }

@@ -1,0 +1,29 @@
+{
+    "name": "hadi/support",
+    "description": "",
+    "authors": [
+        {
+            "name": "Hadi Hilal",
+            "email": "hadi-hilal@hotmail.com"
+        }
+    ],
+    "extra": {
+        "laravel": {
+            "providers": [],
+            "aliases": {
+            }
+        }
+    },
+    "autoload": {
+        "psr-4": {
+            "Modules\\Support\\": "app/",
+            "Modules\\Support\\Database\\Factories\\": "database/factories/",
+            "Modules\\Support\\Database\\Seeders\\": "database/seeders/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Modules\\Support\\Tests\\": "tests/"
+        }
+    }
+}

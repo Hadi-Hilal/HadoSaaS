@@ -13,7 +13,7 @@ class UserModelRepository implements UserRepository {
     use ExceptionHandlerTrait, FileTrait;
 
     public function all(string $type): LengthAwarePaginator {
-        return User::where('type', $type)->paginate(config('core.page_size'));
+        return User::where('type', $type)->latest()->paginate(config('core.page_size'));
     }
 
     public function find(int $id): ?User {

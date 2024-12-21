@@ -14,7 +14,7 @@
                         </div>
                         <div class="card-body">
                             <form @submit.prevent="form.post(route('password.update'))">
-                                <input type="hidden" name="token" :value="token">
+                                <input :value="token" name="token" type="hidden">
                                 <div class="mb-3">
                                     <label class="form-label" for="email">{{ trans("Email") }}</label>
                                     <input

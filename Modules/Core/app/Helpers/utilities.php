@@ -15,4 +15,22 @@ if (!function_exists('autoGoogleTranslator')) {
         $translator = new GoogleTranslate();
         return $translator->setTarget($targetLang)->translate($content);
     }
+
 }
+
+
+if (!function_exists('otherLangs')) {
+    function otherLangs() {
+        $locale = app()->getLocale();
+        return array_keys(array_filter(
+            config('laravellocalization.supportedLocales'),
+            function ($value, $key) use ($locale) {
+                return $key != $locale;
+            },
+            ARRAY_FILTER_USE_BOTH
+        ));
+    }
+
+
+}
+

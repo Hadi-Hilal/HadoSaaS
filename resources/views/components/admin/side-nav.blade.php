@@ -33,8 +33,91 @@
 
         </div>
 
+        <div class="menu-sub menu-sub-accordion {{ isset($active['seo'])  ? 'show' : '' }}">
+            <div class="menu-item">
+                <a class="menu-link {{ isset($active['seo']) ? 'active' : '' }}"
+                   href="{{ route('admin.seo.index') }}">
+                            <span class="menu-bullet">
+                                <span class="bullet bullet-dot"></span>
+                            </span>
+                    <span class="menu-title">{{ __('Seo Configurations') }}</span>
+                </a>
+            </div>
+
+        </div>
+
     </div>
 @endcan
+
+@can('CMS Management')
+    <div data-kt-menu-trigger="click"
+         class="menu-item menu-accordion {{ isset($active['cms']) ? 'show hover' : '' }}">
+            <span class="menu-link">
+                <span class="menu-icon">
+                   <i class="bi bi-intersect"></i>
+                </span>
+                <span class="menu-title">{{ __('CMS') }}</span>
+                <span class="menu-arrow"></span>
+            </span>
+
+
+        <div class="menu-sub menu-sub-accordion {{ isset($active['pages'])  ? 'show' : '' }}">
+            <div class="menu-item">
+                <a class="menu-link {{ isset($active['pages']) ? 'active' : '' }}"
+                   href="{{ route('admin.pages.index') }}">
+                            <span class="menu-bullet">
+                                <span class="bullet bullet-dot"></span>
+                            </span>
+                    <span class="menu-title">{{ __('Pages') }}</span>
+                </a>
+            </div>
+
+        </div>
+
+    </div>
+@endcan
+
+
+@can('Support Management')
+    <div data-kt-menu-trigger="click"
+         class="menu-item menu-accordion {{ isset($active['support']) ? 'show hover' : '' }}">
+            <span class="menu-link">
+                <span class="menu-icon">
+                   <i class="bi bi-headset"></i>
+                </span>
+                <span class="menu-title">{{ __('Support Hub') }}</span>
+                <span class="menu-arrow"></span>
+            </span>
+
+        <div class="menu-sub menu-sub-accordion {{ isset($active['contact_forms'])  ? 'show' : '' }}">
+            <div class="menu-item">
+                <a class="menu-link {{ isset($active['contact_forms']) ? 'active' : '' }}"
+                   href="{{ route('admin.contact_forms.index') }}">
+                            <span class="menu-bullet">
+                                <span class="bullet bullet-dot"></span>
+                            </span>
+                    <span class="menu-title">{{ __('Contacts') }}</span>
+                </a>
+            </div>
+
+        </div>
+        <div class="menu-sub menu-sub-accordion {{ isset($active['subscribers'])  ? 'show' : '' }}">
+            <div class="menu-item">
+                <a class="menu-link {{ isset($active['subscribers']) ? 'active' : '' }}"
+                   href="{{ route('admin.subscribers.index') }}">
+                            <span class="menu-bullet">
+                                <span class="bullet bullet-dot"></span>
+                            </span>
+                    <span class="menu-title">{{ __('Newsletter Subscribers') }}</span>
+                </a>
+            </div>
+
+        </div>
+
+
+    </div>
+@endcan
+
 
 @can('Hr Management')
     <div data-kt-menu-trigger="click"

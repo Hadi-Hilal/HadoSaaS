@@ -460,7 +460,6 @@ Author: Hadi Hilal
 
 <!--end::Main-->
 <!--begin::Javascript-->
-<script>var hostUrl = "/myPanel";</script>
 <!--begin::Global JavaScript Bundle(used by all pages)-->
 <script src="{{asset('admin/plugins/global/plugins.bundle.js')}}"></script>
 <script src="{{asset('admin/js/scripts.bundle.js')}}"></script>
@@ -469,6 +468,7 @@ Author: Hadi Hilal
 <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/js/all.min.js"
         integrity="sha512-6sSYJqDreZRZGkJ3b+YfdhB3MzmuP9R7X1QZ6g5aIXhRvR1Y/N/P47jmnkENm7YL3oqsmI6AK+V6AD99uWDnIw=="
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
 <script>
     @if (session('success'))
     toastr.success('{{ session('success') }}');
@@ -493,12 +493,38 @@ Author: Hadi Hilal
             method: method,
             dataType: dataType,
             data: data,
-            success: onSuccess ,
+            success: onSuccess,
             error: function () {
                 toastr.error('{{ __('An Error Occurred!') }}');
             }
         });
     }
+
+    function generateSlug(text) {
+        return text
+            .toLowerCase()
+            .replace(/[0-9]/g, '') // Remove numbers
+            .replace(/[^\w\s-]/g, '') // Remove non-word characters
+            .replace(/\s+/g, '-') // Replace whitespace with dashes
+            .replace(/--+/g, '-') // Replace multiple dashes with a single dash
+            .trim(); // Trim leading/trailing whitespace and dashes
+    }
+
+    $('#gslug').on('input', function () {
+        let val = $(this).val(),
+            slug = generateSlug(val);
+
+        if (slug !== '') {
+            let viewSlug = "https://domain.com/" + slug
+            $('#link').removeClass('text-danger').addClass('text-primary').css('text-decoration', 'underline').text(viewSlug);
+            $('#slug').val(slug);
+        } else {
+            $('#link').addClass('text-danger').css('text-decoration', '').text("{{__('The Slug Should Be English')}}");
+        }
+
+    });
+
+
 
 </script>
 @yield('js')

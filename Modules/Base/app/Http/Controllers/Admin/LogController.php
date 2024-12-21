@@ -4,6 +4,7 @@ namespace Modules\Base\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Modules\Base\Models\LogDb;
+use Modules\Core\Http\Requests\DeleteMultiRequest;
 
 class LogController extends Controller {
 
@@ -22,9 +23,9 @@ class LogController extends Controller {
         return view('base::admin.log.show', compact('log'));
     }
 
-    public function deleteMulti() {
-        $ids = request()->input('ids');
-        LogDb::destroy($ids);
+    public function deleteMulti(DeleteMultiRequest $request) {
+        LogDb::destroy($request->input('ids'));
+        session()->flushMessage(true);
         return back();
     }
 }
