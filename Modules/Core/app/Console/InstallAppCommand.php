@@ -3,9 +3,9 @@
 namespace Modules\Core\Console;
 
 use App\Models\User;
-use Artisan;
-use DB;
-use Hash;
+use Illuminate\Support\Facades\Artisan;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Console\Command;
 use Spatie\Permission\Models\Permission;
 use Spatie\Permission\Models\Role;
@@ -34,6 +34,9 @@ class InstallAppCommand extends Command {
      * Execute the console command.
      */
     public function handle() {
+
+        Artisan::call('key:generate');
+
         Artisan::call('migrate');
 
         $sqlFilePath = module_path('Core', 'database/db.sql');

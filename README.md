@@ -3,7 +3,7 @@
 HadoSaaS is a Laravel starter kit designed for rapid development of SaaS and admin-oriented applications. 
 It comes with essential features like modular structure, user roles, settings management, 
 and more, making it easy to get started with scalable and organized projects.
-it save for you at least 50 Hr
+It saves for you at least 50 Hr.
 
 ## Purpose
 
@@ -16,6 +16,7 @@ With built-in support for user management, settings, and roles, this starter kit
 - **User & Role Management**: Implement user permissions and role-based access control.
 - **Settings Module**: Centralized configuration for app-wide settings.
 - **Support**: two langs en & ar
+- **Admin Panel**: the project use metronic admin panel
 ## Requirements
 
 - **Laravel**: Built on Laravel 11
@@ -35,7 +36,8 @@ HadoSaaS is built with the following key Laravel packages:
 
 To set up HadoSaaS, follow these steps:
 
-1. Run `composer update` to install dependencies.
-2. Run `php artisan app:install` to complete the setup.
+1. Run `composer update` to install vendor dependencies.
+2. Run `npm install && npm run build` to install node dependencies
+3. Run `php artisan app:install` to complete the setup.
 
 Perfect for developers who want to kickstart their next Laravel SaaS project with a pre-built foundation!

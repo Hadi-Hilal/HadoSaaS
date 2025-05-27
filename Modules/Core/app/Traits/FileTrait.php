@@ -24,7 +24,7 @@ trait FileTrait {
             return null;
         }
 
-        // Remove old file if specified
+        // Remove an old file if specified
         if ($old) {
             $this->deleteFile($old, $disk);
         }
