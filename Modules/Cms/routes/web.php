@@ -1,7 +1,6 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use Modules\Cms\Http\Controllers\CmsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,5 +13,4 @@ use Modules\Cms\Http\Controllers\CmsController;
 |
 */
 
-Route::resource('cms', CmsController::class)->names('cms');
 

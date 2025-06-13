@@ -13,7 +13,3 @@ use Modules\Support\Http\Controllers\SupportController;
  * is assigned the "api" middleware group. Enjoy building your API!
  *
 */
-
-Route::middleware(['auth:sanctum'])->prefix('v1')->group(function () {
-    Route::apiResource('support', SupportController::class)->names('support');
-});

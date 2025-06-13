@@ -1,7 +1,6 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use Modules\Support\Http\Controllers\SupportController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,5 +13,4 @@ use Modules\Support\Http\Controllers\SupportController;
 |
 */
 
-Route::resource('support', SupportController::class)->names('support');
 
