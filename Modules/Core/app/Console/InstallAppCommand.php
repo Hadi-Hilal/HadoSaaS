@@ -3,10 +3,10 @@
 namespace Modules\Core\Console;
 
 use App\Models\User;
+use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Console\Command;
 use Spatie\Permission\Models\Permission;
 use Spatie\Permission\Models\Role;
 use Symfony\Component\Console\Input\InputArgument;
@@ -56,7 +56,7 @@ class InstallAppCommand extends Command {
         $role->syncPermissions(Permission::all());
         $user = User::create([
             'name' => 'Admin',
-            'email' => 'admin@admin.com',
+            'email' => 'admin@example.com',
             'password' => Hash::make('12345678'),
             'mobile' => '0905000000000',
             'type' => 'admin'
@@ -64,8 +64,10 @@ class InstallAppCommand extends Command {
         ]);
 
         $role->users()->attach($user);
-        $this->alert('app installed');
-        $this->alert('Login: email: admin@admin.com | password: 12345678');
+        $this->alert("✅ Application installed successfully!");
+        $this->alert("🔐 Login credentials:\nEmail: admin@example.com\nPassword: 12345678");
+        $this->alert("✨ Developed with care by Hadi Hilal");
+
     }
 
     /**

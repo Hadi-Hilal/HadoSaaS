@@ -24,6 +24,8 @@ With built-in support for user management, settings, and roles, this starter kit
 
 ## Packages Used
 
+## Packages Used
+
 HadoSaaS is built with the following key Laravel packages:
 
 - **[laravel-modules](https://github.com/nWidart/laravel-modules)**: For modular structure and organized code.
@@ -31,6 +33,9 @@ HadoSaaS is built with the following key Laravel packages:
 - **[laravel-permission](https://github.com/spatie/laravel-permission)**: For role and permission management.
 - **[laravel-localization](https://github.com/mcamara/laravel-localization)**: To support multiple languages in the app.
 - **[image-laravel](https://github.com/Intervention/image)**: For handling and manipulating images.
+- **[Laravel Telescope](https://laravel.com/docs/telescope)**: A powerful debugging assistant for Laravel.
+- **[Laravel Pulse](https://laravel.com/docs/pulse)**: A modern, real-time performance monitoring tool for Laravel applications.
+
 
 ## Getting Started
 
