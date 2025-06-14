@@ -12,7 +12,7 @@ use Spatie\Permission\Traits\HasRoles;
 class User extends Authenticatable
 {
     /** @use HasFactory<\Database\Factories\UserFactory> */
-    use HasFactory, Notifiable, HasRoles;
+    use HasFactory, HasRoles, Notifiable;
 
     /**
      * The attributes that are mass assignable.
@@ -25,8 +25,8 @@ class User extends Authenticatable
         'mobile',
         'password',
         'last_login',
-        'img' ,
-        'type'
+        'img',
+        'type',
     ];
 
     /**
@@ -39,7 +39,7 @@ class User extends Authenticatable
         'remember_token',
     ];
 
-        /**
+    /**
      * Get the attributes that should be cast.
      *
      * @return array<string, string>
@@ -55,15 +55,17 @@ class User extends Authenticatable
 
     protected $appends = ['avatar'];
 
-    public function scopeType(Builder $builder , string $type = 'user')
+    public function scopeType(Builder $builder, string $type = 'user')
     {
-        $builder->where('type' , $type);
+        $builder->where('type', $type);
     }
+
     public function getLastLoginHumanAttribute()
     {
         if ($this->last_login) {
             return $this->last_login->diffForHumans();
         }
+
         return null;
     }
 
@@ -71,11 +73,10 @@ class User extends Authenticatable
     {
         $path = asset('images/avatar.png');
 
-        if (!is_null($this->attributes['img'])) {
-            $path = asset('storage/' . $this->attributes['img']);
+        if (! is_null($this->attributes['img'])) {
+            $path = asset('storage/'.$this->attributes['img']);
         }
+
         return $path;
     }
-
-
 }

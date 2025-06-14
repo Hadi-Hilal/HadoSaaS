@@ -5,7 +5,8 @@ namespace Modules\User\Repositories\Role;
 use Illuminate\Support\Collection;
 use Spatie\Permission\Models\Role;
 
-interface RoleRepository {
+interface RoleRepository
+{
     public function all(): Collection;
 
     public function findById(int $id): Role;

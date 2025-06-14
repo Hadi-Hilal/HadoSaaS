@@ -61,7 +61,7 @@ return [
         'database' => [
             'driver' => 'custom',
             'via' => danielme85\LaravelLogToDB\LogToDbHandler::class,
-            'name' => 'Basic DB Logging'
+            'name' => 'Basic DB Logging',
         ],
         'single' => [
             'driver' => 'single',

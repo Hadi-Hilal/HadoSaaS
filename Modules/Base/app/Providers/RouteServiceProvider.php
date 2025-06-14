@@ -6,7 +6,8 @@ use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvi
 use Illuminate\Support\Facades\Route;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 
-class RouteServiceProvider extends ServiceProvider {
+class RouteServiceProvider extends ServiceProvider
+{
     protected string $name = 'Base';
 
     /**
@@ -14,14 +15,16 @@ class RouteServiceProvider extends ServiceProvider {
      *
      * Register any model bindings or pattern based filters.
      */
-    public function boot(): void {
+    public function boot(): void
+    {
         parent::boot();
     }
 
     /**
      * Define the routes for the application.
      */
-    public function map(): void {
+    public function map(): void
+    {
         $this->mapApiRoutes();
         $this->mapWebRoutes();
         $this->mapAdminRoutes();
@@ -32,26 +35,28 @@ class RouteServiceProvider extends ServiceProvider {
      *
      * These routes are typically stateless.
      */
-    protected function mapApiRoutes(): void {
+    protected function mapApiRoutes(): void
+    {
         Route::middleware('api')->prefix('api')->name('api.')->group(module_path($this->name, '/routes/api.php'));
     }
 
-
-    protected function mapWebRoutes(): void {
+    protected function mapWebRoutes(): void
+    {
         $name = $this->name;
         Route::group([
             'prefix' => LaravelLocalization::setLocale(),
-            'middleware' => ['localeSessionRedirect', 'localizationRedirect', 'localeViewPath']
+            'middleware' => ['localeSessionRedirect', 'localizationRedirect', 'localeViewPath'],
         ], static function () use ($name) {
             Route::middleware('web')->group(module_path($name, '/routes/web.php'));
         });
     }
 
-    protected function mapAdminRoutes(): void {
+    protected function mapAdminRoutes(): void
+    {
         $name = $this->name;
         Route::group([
             'prefix' => LaravelLocalization::setLocale(),
-            'middleware' => ['localeSessionRedirect', 'localizationRedirect', 'localeViewPath']
+            'middleware' => ['localeSessionRedirect', 'localizationRedirect', 'localeViewPath'],
         ], static function () use ($name) {
             Route::prefix('admin')
                 ->name('admin.')
@@ -60,5 +65,4 @@ class RouteServiceProvider extends ServiceProvider {
 
         });
     }
-
 }

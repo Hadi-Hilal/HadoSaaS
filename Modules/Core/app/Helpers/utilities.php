@@ -5,23 +5,26 @@ use Stichoza\GoogleTranslate\Exceptions\RateLimitException;
 use Stichoza\GoogleTranslate\Exceptions\TranslationRequestException;
 use Stichoza\GoogleTranslate\GoogleTranslate;
 
-if (!function_exists('autoGoogleTranslator')) {
+if (! function_exists('autoGoogleTranslator')) {
     /**
      * @throws LargeTextException
      * @throws RateLimitException
      * @throws TranslationRequestException
      */
-    function autoGoogleTranslator(string $targetLang, string $content) {
-        $translator = new GoogleTranslate();
+    function autoGoogleTranslator(string $targetLang, string $content)
+    {
+        $translator = new GoogleTranslate;
+
         return $translator->setTarget($targetLang)->translate($content);
     }
 
 }
 
-
-if (!function_exists('otherLangs')) {
-    function otherLangs() {
+if (! function_exists('otherLangs')) {
+    function otherLangs()
+    {
         $locale = app()->getLocale();
+
         return array_keys(array_filter(
             config('laravellocalization.supportedLocales'),
             function ($value, $key) use ($locale) {
@@ -31,6 +34,4 @@ if (!function_exists('otherLangs')) {
         ));
     }
 
-
 }
-

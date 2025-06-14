@@ -11,10 +11,12 @@ use Modules\Cms\Repositories\Page\PageRepository;
 use Modules\Core\Http\Requests\DeleteMultiRequest;
 use Modules\User\Enums\CmsStatus;
 
-class PageController extends Controller {
+class PageController extends Controller
+{
     protected PageRepository $pageRepository;
 
-    public function __construct(PageRepository $pageRepository) {
+    public function __construct(PageRepository $pageRepository)
+    {
         $this->pageRepository = $pageRepository;
         $this->setActive('cms');
         $this->setActive('pages');
@@ -23,9 +25,10 @@ class PageController extends Controller {
     /**
      * Display a listing of pages.
      */
-    public function index() {
+    public function index()
+    {
         $model = $this->pageRepository->all([
-            'id', 'title', 'slug', 'image', 'status', 'featured', 'visits', 'created_at'
+            'id', 'title', 'slug', 'image', 'status', 'featured', 'visits', 'created_at',
         ]);
 
         return view('cms::admin.page.index', compact('model'));
@@ -34,14 +37,16 @@ class PageController extends Controller {
     /**
      * Show the form for creating a new page.
      */
-    public function create() {
+    public function create()
+    {
         return view('cms::admin.page.create');
     }
 
     /**
      * Store a newly created page in storage.
      */
-    public function store(Request $request): RedirectResponse {
+    public function store(Request $request): RedirectResponse
+    {
 
         // Convert request data to PageData DTO
         $data = PageData::validate([
@@ -63,7 +68,8 @@ class PageController extends Controller {
     /**
      * Show the form for editing the specified page.
      */
-    public function edit(Page $page) {
+    public function edit(Page $page)
+    {
 
         return view('cms::admin.page.edit', compact('page'));
     }
@@ -71,7 +77,8 @@ class PageController extends Controller {
     /**
      * Update the specified page in storage.
      */
-    public function update(Request $request, Page $page): RedirectResponse {
+    public function update(Request $request, Page $page): RedirectResponse
+    {
         // Convert request data to PageData DTO
         $data = PageData::validate([
             'title' => $request->input('title'),
@@ -91,7 +98,8 @@ class PageController extends Controller {
     /**
      * Remove multiple pages from storage.
      */
-    public function deleteMulti(DeleteMultiRequest $request): RedirectResponse {
+    public function deleteMulti(DeleteMultiRequest $request): RedirectResponse
+    {
         $this->pageRepository->deleteMulti($request->input('ids'));
 
         return back();

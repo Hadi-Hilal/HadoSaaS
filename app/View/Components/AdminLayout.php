@@ -9,6 +9,7 @@ use Illuminate\View\Component;
 class AdminLayout extends Component
 {
     protected \Illuminate\Contracts\Auth\Authenticatable|null|\App\Models\User $user;
+
     /**
      * Create a new component instance.
      */

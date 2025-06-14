@@ -7,7 +7,8 @@ use Illuminate\Support\ServiceProvider;
 use Modules\Core\Console\InstallAppCommand;
 use Nwidart\Modules\Traits\PathNamespace;
 
-class CoreServiceProvider extends ServiceProvider {
+class CoreServiceProvider extends ServiceProvider
+{
     use PathNamespace;
 
     protected string $name = 'Core';
@@ -17,7 +18,8 @@ class CoreServiceProvider extends ServiceProvider {
     /**
      * Boot the application events.
      */
-    public function boot(): void {
+    public function boot(): void
+    {
         $this->registerCommands();
         $this->registerCommandSchedules();
         $this->registerTranslations();
@@ -29,14 +31,16 @@ class CoreServiceProvider extends ServiceProvider {
     /**
      * Register commands in the format of Command::class
      */
-    protected function registerCommands(): void {
+    protected function registerCommands(): void
+    {
         $this->commands([InstallAppCommand::class]);
     }
 
     /**
      * Register command Schedules.
      */
-    protected function registerCommandSchedules(): void {
+    protected function registerCommandSchedules(): void
+    {
         // $this->app->booted(function () {
         //     $schedule = $this->app->make(Schedule::class);
         //     $schedule->command('inspire')->hourly();
@@ -46,7 +50,8 @@ class CoreServiceProvider extends ServiceProvider {
     /**
      * Register translations.
      */
-    public function registerTranslations(): void {
+    public function registerTranslations(): void
+    {
         $langPath = resource_path('lang/modules/'.$this->nameLower);
 
         if (is_dir($langPath)) {
@@ -61,7 +66,8 @@ class CoreServiceProvider extends ServiceProvider {
     /**
      * Register config.
      */
-    protected function registerConfig(): void {
+    protected function registerConfig(): void
+    {
         $this->publishes([module_path($this->name, 'config/config.php') => config_path($this->nameLower.'.php')], 'config');
         $this->mergeConfigFrom(module_path($this->name, 'config/config.php'), $this->nameLower);
     }
@@ -69,7 +75,8 @@ class CoreServiceProvider extends ServiceProvider {
     /**
      * Register the service provider.
      */
-    public function register(): void {
+    public function register(): void
+    {
         $this->app->register(EventServiceProvider::class);
         $this->app->register(MacroServiceProvider::class);
     }
@@ -77,7 +84,8 @@ class CoreServiceProvider extends ServiceProvider {
     /**
      * Register views.
      */
-    public function registerViews(): void {
+    public function registerViews(): void
+    {
         $viewPath = resource_path('views/modules/'.$this->nameLower);
         $sourcePath = module_path($this->name, 'resources/views');
 
@@ -89,7 +97,8 @@ class CoreServiceProvider extends ServiceProvider {
         Blade::componentNamespace($componentNamespace, $this->nameLower);
     }
 
-    private function getPublishableViewPaths(): array {
+    private function getPublishableViewPaths(): array
+    {
         $paths = [];
         foreach (config('view.paths') as $path) {
             if (is_dir($path.'/modules/'.$this->nameLower)) {
@@ -103,7 +112,8 @@ class CoreServiceProvider extends ServiceProvider {
     /**
      * Get the services provided by the provider.
      */
-    public function provides(): array {
+    public function provides(): array
+    {
         return [];
     }
 }

@@ -4,11 +4,13 @@ namespace Modules\User\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class StoreUserRequest extends FormRequest {
+class StoreUserRequest extends FormRequest
+{
     /**
      * Get the validation rules that apply to the request.
      */
-    public function rules(): array {
+    public function rules(): array
+    {
         return [
             'img' => 'nullable|image|mimes:jpeg,png,jpg,webp|max:1048',
             'name' => 'required|min:3',
@@ -21,7 +23,8 @@ class StoreUserRequest extends FormRequest {
     /**
      * Determine if the user is authorized to make this request.
      */
-    public function authorize(): bool {
+    public function authorize(): bool
+    {
         return true;
     }
 }

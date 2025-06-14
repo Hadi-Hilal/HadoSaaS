@@ -7,20 +7,21 @@ use Illuminate\Support\Facades\Storage;
 use Intervention\Image\Laravel\Facades\Image;
 use Symfony\Component\HttpFoundation\File\Exception\FileException;
 
-trait FileTrait {
+trait FileTrait
+{
     /**
      * Uploads a file or image to the specified directory.
      */
     public function upload(
         UploadedFile $file,
-        string       $dir,
-        ?string      $name = null,
-        ?string      $old = null,
-        ?int         $width = null,
-        string       $disk = 'public'
+        string $dir,
+        ?string $name = null,
+        ?string $old = null,
+        ?int $width = null,
+        string $disk = 'public'
     ): ?string {
         // Validate the file
-        if (!$this->isValidFile($file)) {
+        if (! $this->isValidFile($file)) {
             return null;
         }
 
@@ -50,15 +51,18 @@ trait FileTrait {
     /**
      * Validates if a file is acceptable for upload.
      */
-    private function isValidFile(UploadedFile $file): bool {
-        if (!$file->isValid()) {
+    private function isValidFile(UploadedFile $file): bool
+    {
+        if (! $file->isValid()) {
             session()->flushMessage(false, __('The selected file is not valid.'));
+
             return false;
         }
 
         $allowedMimeTypes = config('core.allowed_mime_types');
-        if (!in_array($file->getMimeType(), $allowedMimeTypes, true)) {
+        if (! in_array($file->getMimeType(), $allowedMimeTypes, true)) {
             session()->flushMessage(false, __('File type is not allowed.'));
+
             return false;
         }
 
@@ -68,7 +72,8 @@ trait FileTrait {
     /**
      * Deletes a file from the specified disk.
      */
-    public function deleteFile(string $filename, string $disk = 'public'): void {
+    public function deleteFile(string $filename, string $disk = 'public'): void
+    {
         try {
             Storage::disk($disk)->delete($filename);
         } catch (FileException $exception) {
@@ -79,7 +84,8 @@ trait FileTrait {
     /**
      * Generates a sanitized, secure filename.
      */
-    private function generateFilename(UploadedFile $file, ?string $name = null): string {
+    private function generateFilename(UploadedFile $file, ?string $name = null): string
+    {
         $originalName = pathinfo($file->getClientOriginalName(), PATHINFO_FILENAME);
         $sanitizedOriginalName = preg_replace('/[^a-zA-Z0-9_\-]/', '_', $originalName);
         $hash = md5($sanitizedOriginalName.time());
@@ -90,7 +96,8 @@ trait FileTrait {
     /**
      * Deletes an entire directory from the specified disk.
      */
-    public function deleteDir(string $dir, string $disk = 'public'): void {
+    public function deleteDir(string $dir, string $disk = 'public'): void
+    {
         try {
             Storage::disk($disk)->deleteDirectory($dir);
         } catch (FileException $exception) {

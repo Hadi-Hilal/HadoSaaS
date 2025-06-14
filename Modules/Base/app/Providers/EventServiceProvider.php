@@ -4,13 +4,15 @@ namespace Modules\Base\Providers;
 
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
 
-class EventServiceProvider extends ServiceProvider {
+class EventServiceProvider extends ServiceProvider
+{
     /**
      * Indicates if events should be discovered.
      *
      * @var bool
      */
     protected static $shouldDiscoverEvents = true;
+
     /**
      * The event handler mappings for the application.
      *
@@ -21,7 +23,8 @@ class EventServiceProvider extends ServiceProvider {
     /**
      * Configure the proper event listeners for email verification.
      */
-    protected function configureEmailVerification(): void {
+    protected function configureEmailVerification(): void
+    {
         //
     }
 }

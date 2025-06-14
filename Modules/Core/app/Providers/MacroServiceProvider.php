@@ -7,11 +7,13 @@ use Log;
 use Session;
 use Throwable;
 
-class MacroServiceProvider extends ServiceProvider {
+class MacroServiceProvider extends ServiceProvider
+{
     /**
      * Register the service provider.
      */
-    public function register(): void {
+    public function register(): void
+    {
         Session::macro('flushMessage', function (bool $condition, ?string $msg = null, ?Throwable $exception = null) {
             session()->flash($condition ? 'success' : 'error', $msg ?? ($condition
                 ? __('The Operation Done Successfully')
@@ -27,7 +29,8 @@ class MacroServiceProvider extends ServiceProvider {
     /**
      * Get the services provided by the provider.
      */
-    public function provides(): array {
+    public function provides(): array
+    {
         return [];
     }
 }

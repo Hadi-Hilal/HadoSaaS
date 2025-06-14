@@ -6,11 +6,13 @@ use Illuminate\Support\ServiceProvider;
 use Inertia\Inertia;
 use Laravel\Fortify\Fortify;
 
-class AuthServiceProvider extends ServiceProvider {
+class AuthServiceProvider extends ServiceProvider
+{
     /**
      * Register the service provider.
      */
-    public function register(): void {
+    public function register(): void
+    {
         Fortify::loginView(function () {
             return Inertia::render('User::Auth/Login');
         });
@@ -32,7 +34,8 @@ class AuthServiceProvider extends ServiceProvider {
     /**
      * Get the services provided by the provider.
      */
-    public function provides(): array {
+    public function provides(): array
+    {
         return [];
     }
 }

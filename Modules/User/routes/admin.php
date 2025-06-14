@@ -8,7 +8,6 @@ use Modules\User\Http\Controllers\Admin\UserController;
 
 Route::get('dashboard', [DashboardController::class, 'index'])->name('dashboard.index');
 
-
 Route::middleware('can:Hr Management')
     ->group(function () {
         Route::prefix('roles')->name('roles.')

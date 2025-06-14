@@ -123,7 +123,7 @@ return [
     'middleware' => [
         'web',
         Authorize::class,
-        \App\Http\Middleware\IsAdmin::class
+        \App\Http\Middleware\IsAdmin::class,
     ],
 
     /*

@@ -15,18 +15,21 @@ use Illuminate\Support\Str;
 use Laravel\Fortify\Fortify;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 
-class FortifyServiceProvider extends ServiceProvider {
+class FortifyServiceProvider extends ServiceProvider
+{
     /**
      * Register any application services.
      */
-    public function register(): void {
+    public function register(): void
+    {
         //
     }
 
     /**
      * Bootstrap any application services.
      */
-    public function boot(): void {
+    public function boot(): void
+    {
 
         Fortify::createUsersUsing(CreateNewUser::class);
         Fortify::updateUserProfileInformationUsing(UpdateUserProfileInformation::class);
@@ -45,10 +48,11 @@ class FortifyServiceProvider extends ServiceProvider {
         $this->configureRoutes();
     }
 
-    protected function configureRoutes() {
+    protected function configureRoutes()
+    {
         Route::group([
             'prefix' => LaravelLocalization::setLocale(),
-            'middleware' => ['localeSessionRedirect', 'localizationRedirect', 'localeViewPath']
+            'middleware' => ['localeSessionRedirect', 'localizationRedirect', 'localeViewPath'],
         ], function () {
             $this->loadRoutesFrom((base_path('vendor/laravel/fortify/routes/routes.php')));
         });

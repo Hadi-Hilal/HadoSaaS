@@ -15,7 +15,8 @@ class IsAdmin
      */
     public function handle(Request $request, Closure $next): Response
     {
-        abort_if(!auth()->check() || auth()->user()->type !== 'admin', 403);
+        abort_if(! auth()->check() || auth()->user()->type !== 'admin', 403);
+
         return $next($request);
     }
 }

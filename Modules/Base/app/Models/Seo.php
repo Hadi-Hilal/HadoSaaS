@@ -8,23 +8,25 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Cache;
 use Spatie\Translatable\HasTranslations;
 
-class Seo extends Model {
+class Seo extends Model
+{
     use HasTranslations;
 
     public $translatable = ['value'];
+
     public $timestamps = false;
 
     protected $table = 'seo';
+
     protected $fillable = ['key', 'value'];
 
     /**
      * Retrieve SEO value by key.
      *
-     * @param  string  $key
      * @param  mixed|null  $default
-     * @return mixed
      */
-    public static function get(string $key, $default = null): mixed {
+    public static function get(string $key, $default = null): mixed
+    {
         $seo = self::getAllSeoEntries();
 
         $model = $seo->firstWhere('key', $key);
@@ -34,21 +36,17 @@ class Seo extends Model {
 
     /**
      * Get all SEO entries, with caching.
-     *
-     * @return Collection
      */
-    protected static function getAllSeoEntries(): Collection {
-        return Cache::remember('seo_entries', now()->addMinutes(10), fn() => self::all());
+    protected static function getAllSeoEntries(): Collection
+    {
+        return Cache::remember('seo_entries', now()->addMinutes(10), fn () => self::all());
     }
 
     /**
      * Set SEO value by key.
-     *
-     * @param  string  $key
-     * @param  string  $value
-     * @return bool
      */
-    public static function set(string $key, string $value): bool {
+    public static function set(string $key, string $value): bool
+    {
         $seo = self::getAllSeoEntries();
 
         $model = $seo->firstWhere('key', $key);
@@ -71,16 +69,15 @@ class Seo extends Model {
         }
 
         self::cacheSeoEntries($seo);
+
         return true;
     }
 
     /**
      * Cache the SEO entries.
-     *
-     * @param  Collection  $seo
-     * @return void
      */
-    protected static function cacheSeoEntries(Collection $seo): void {
+    protected static function cacheSeoEntries(Collection $seo): void
+    {
         Cache::put('seo_entries', $seo, now()->addMinutes(10));
     }
 }

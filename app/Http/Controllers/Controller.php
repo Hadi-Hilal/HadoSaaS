@@ -11,6 +11,7 @@ abstract class Controller
     {
         $active[$key] = true;
         view()->share('active', $active);
+
         return $this;
     }
 
@@ -20,6 +21,7 @@ abstract class Controller
             return Country::all();
         });
         view()->share('countries', $countries);
+
         return $this;
     }
 }

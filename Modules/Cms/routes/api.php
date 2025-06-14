@@ -1,8 +1,5 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
-use Modules\Cms\Http\Controllers\CmsController;
-
 /*
  *--------------------------------------------------------------------------
  * API Routes
@@ -13,4 +10,3 @@ use Modules\Cms\Http\Controllers\CmsController;
  * is assigned the "api" middleware group. Enjoy building your API!
  *
 */
-

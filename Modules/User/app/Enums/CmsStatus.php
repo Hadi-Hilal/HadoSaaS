@@ -2,13 +2,15 @@
 
 namespace Modules\User\Enums;
 
-enum CmsStatus: string {
+enum CmsStatus: string
+{
     case ARCHIVED = 'Archived';
     case PUBLISHED = 'Published';
 
-    public static function getStatus(): array {
+    public static function getStatus(): array
+    {
         return array_map(
-            fn(self $status) => [$status->value => __($status->value)],
+            fn (self $status) => [$status->value => __($status->value)],
             self::cases()
         );
     }

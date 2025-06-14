@@ -7,21 +7,25 @@ use Illuminate\Http\Request;
 use Modules\Base\Models\Settings;
 use Modules\Core\Traits\FileTrait;
 
-class SettingsController extends Controller {
+class SettingsController extends Controller
+{
     use FileTrait;
 
-    public function __construct() {
+    public function __construct()
+    {
         $this->setActive('settings');
     }
 
-    public function index() {
+    public function index()
+    {
         $this->setActive('websiteConfigurations');
         $settings = Settings::pluck('value', 'key');
+
         return view('base::admin.settings.index', compact('settings'));
     }
 
-
-    public function store(Request $request) {
+    public function store(Request $request)
+    {
         // Handle uploaded images
         if ($request->hasFile('imgs')) {
             foreach ($request->file('imgs') as $key => $file) {
@@ -45,5 +49,4 @@ class SettingsController extends Controller {
 
         return back();
     }
-
 }

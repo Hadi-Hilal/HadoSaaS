@@ -6,20 +6,23 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Modules\Base\Models\Seo;
 
-class SeoController extends Controller {
-
-    public function __construct() {
+class SeoController extends Controller
+{
+    public function __construct()
+    {
         $this->setActive('settings');
     }
 
-    public function index() {
+    public function index()
+    {
         $this->setActive('seo');
         $seo = Seo::pluck('value', 'key');
+
         return view('base::admin.seo.index', compact('seo'));
     }
 
-
-    public function store(Request $request) {
+    public function store(Request $request)
+    {
 
         if ($request->filled('data')) {
             foreach ($request->input('data') as $key => $value) {
@@ -33,5 +36,4 @@ class SeoController extends Controller {
 
         return back();
     }
-
 }
