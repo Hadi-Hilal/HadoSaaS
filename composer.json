@@ -19,6 +19,7 @@
         "laravel/tinker": "^2.9",
         "mcamara/laravel-localization": "^2.0",
         "nwidart/laravel-modules": "^11.1",
+        "predis/predis": "2.0",
         "spatie/laravel-data": "^4.11",
         "spatie/laravel-permission": "^6.10",
         "spatie/laravel-translatable": "^6.9",

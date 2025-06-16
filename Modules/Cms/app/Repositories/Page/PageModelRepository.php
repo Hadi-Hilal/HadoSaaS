@@ -10,8 +10,7 @@ use Modules\Cms\Models\Page;
 use Modules\Core\Traits\ExceptionHandlerTrait;
 use Modules\Core\Traits\FileTrait;
 
-class PageModelRepository implements PageRepository
-{
+class PageModelRepository implements PageRepository {
     use ExceptionHandlerTrait, FileTrait;
 
     private string $pageUploadPath = 'pages';
@@ -19,29 +18,26 @@ class PageModelRepository implements PageRepository
     /**
      * Fetch all pages with optional filters and pagination.
      */
-    public function all(array $columns = ['*']): LengthAwarePaginator
-    {
+    public function all(array $columns = ['*']): LengthAwarePaginator {
         $request = request();
 
         return Page::select($columns)->latest()
-            ->when($request->filled('publish'), fn ($q) => $q->where('publish', $request->query('publish')))
-            ->when($request->filled('type'), fn ($q) => $q->where('type', $request->query('type')))
+            ->when($request->filled('publish'), fn($q) => $q->where('publish', $request->query('publish')))
+            ->when($request->filled('type'), fn($q) => $q->where('type', $request->query('type')))
             ->paginate(Config::get('core.page_size', 10));
     }
 
     /**
      * Find a page by ID.
      */
-    public function find(int $id, array $columns = ['*']): ?Page
-    {
+    public function find(int $id, array $columns = ['*']): ?Page {
         return Page::find($id, $columns);
     }
 
     /**
      * Store a new page.
      */
-    public function store(array $data): mixed
-    {
+    public function store(array $data): mixed {
         return $this->execute(function () use ($data) {
             $pageData = $this->preparePageData($data);
             Page::create($pageData);
@@ -53,8 +49,7 @@ class PageModelRepository implements PageRepository
     /**
      * Prepare page data for storage or update.
      */
-    private function preparePageData(array $data, ?string $existingImage = null): array
-    {
+    private function preparePageData(array $data, ?string $existingImage = null): array {
         $path = $this->handleImageUpload($data, $existingImage);
         $keywords = $this->parseKeywords($data['keywords']);
 
@@ -88,8 +83,7 @@ class PageModelRepository implements PageRepository
     /**
      * Handle image upload.
      */
-    private function handleImageUpload(array $data, ?string $existingImage = null): ?string
-    {
+    private function handleImageUpload(array $data, ?string $existingImage = null): ?string {
         return $data['image']
             ? $this->upload($data['image'], $this->pageUploadPath, $data['slug'], $existingImage)
             : $existingImage;
@@ -98,9 +92,8 @@ class PageModelRepository implements PageRepository
     /**
      * Parse keywords JSON input into a comma-separated string.
      */
-    private function parseKeywords(?string $keywordsInput): string
-    {
-        if (! $keywordsInput) {
+    private function parseKeywords(?string $keywordsInput): string {
+        if (!$keywordsInput) {
             return '';
         }
 
@@ -112,16 +105,14 @@ class PageModelRepository implements PageRepository
     /**
      * Clear cached pages.
      */
-    private function clearPageCache(): void
-    {
+    private function clearPageCache(): void {
         cache()->forget('pages');
     }
 
     /**
      * Update an existing page.
      */
-    public function update(array $data, Page $page): mixed
-    {
+    public function update(array $data, Page $page): mixed {
         return $this->execute(function () use ($data, $page) {
             $pageData = $this->preparePageData($data, $page->image);
             $page->update($pageData);
@@ -135,8 +126,7 @@ class PageModelRepository implements PageRepository
     /**
      * Delete multiple pages and clean up images.
      */
-    public function deleteMulti(array $ids): ?bool
-    {
+    public function deleteMulti(array $ids): ?bool {
         return $this->execute(function () use ($ids) {
             $images = Page::whereIn('id', $ids)->pluck('image')->filter()->toArray();
             Page::destroy($ids);
