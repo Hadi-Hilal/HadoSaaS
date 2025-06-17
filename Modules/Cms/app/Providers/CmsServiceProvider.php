@@ -6,6 +6,8 @@ use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\ServiceProvider;
 use Modules\Cms\Repositories\Page\PageModelRepository;
 use Modules\Cms\Repositories\Page\PageRepository;
+use Modules\Cms\Repositories\Blog\BlogRepository;
+use Modules\Cms\Repositories\Blog\BlogModelRepository;
 use Nwidart\Modules\Traits\PathNamespace;
 
 class CmsServiceProvider extends ServiceProvider
@@ -109,6 +111,7 @@ class CmsServiceProvider extends ServiceProvider
         $this->app->register(EventServiceProvider::class);
         $this->app->register(RouteServiceProvider::class);
         $this->app->bind(PageRepository::class, PageModelRepository::class);
+        $this->app->bind(BlogRepository::class, BlogModelRepository::class);
     }
 
     /**
