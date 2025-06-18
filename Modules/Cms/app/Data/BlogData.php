@@ -12,31 +12,34 @@ use Spatie\LaravelData\Attributes\Validation\Rule;
 use Spatie\LaravelData\Attributes\Validation\StringType;
 use Spatie\LaravelData\Data;
 
-class BlogData extends Data {
+class BlogData extends Data
+{
     public function __construct(
         #[Required, StringType, Rule('min:2', 'max:255')]
-        public string        $title,
+        public string $title,
 
         #[Required, StringType, Rule('min:2', 'max:255')]
-        public string        $slug,
+        public string $slug,
 
         #[Nullable, StringType, Rule('max:255')]
-        public ?string       $description,
+        public ?string $description,
 
         #[Required, StringType]
-        public string        $content,
+        public string $content,
 
         #[Nullable, StringType, Rule('max:255')]
-        public ?string       $keywords = null,
+        public ?string $keywords,
 
         #[Nullable, File, Rule('mimes:jpeg,jpg,png,gif', 'max:2048')]
-        public ?UploadedFile $image = null,
+        public ?UploadedFile $image,
 
         #[Nullable]
-        public CmsStatus     $status = CmsStatus::PUBLISHED,
+        public CmsStatus $status,
 
         #[Nullable, BooleanType]
-        public ?bool         $featured = false
-    ) {
-    }
+        public ?bool $featured,
+
+        #[Required]
+        public int $category_id,
+    ) {}
 }

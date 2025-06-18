@@ -53,6 +53,20 @@
         </div>
         <div class="row mb-8">
             <div class="col-xl-3">
+                <div class="fs-6 fw-bold mt-2 mb-3">{{__('Category')}} <span class="text-danger">*</span></div>
+            </div>
+            <div class="col-xl-9 fv-row">
+                <select name="category_id" class="form-control form-control-solid" required>
+                    <option value="">{{__('Select Category')}}</option>
+                    @foreach($categories as $category)
+                        <option value="{{$category->id}}"
+                                @if($blog->category_id == $category->id) selected @endif>{{$category->name}}</option>
+                    @endforeach
+                </select>
+            </div>
+        </div>
+        <div class="row mb-8">
+            <div class="col-xl-3">
                 <div class="fs-6 fw-bold mt-2 mb-3"><i class="bi bi-translate text-primary mx-1 "></i>{{__('Title')}}
                     <span class="text-danger">*</span></div>
             </div>
@@ -97,6 +111,7 @@
                        id="kt_tagify_1"/>
             </div>
         </div>
+
         <div class="row mb-8">
             <div class="col-xl-3">
                 <div class="fs-6 fw-bold mt-2 mb-3">{{__('Publish Status')}}</div>

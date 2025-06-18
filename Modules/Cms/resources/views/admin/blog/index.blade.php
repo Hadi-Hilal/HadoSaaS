@@ -31,6 +31,7 @@
             <th class="min-w-150px">{{__('Featured')}}</th>
             <th class="min-w-150px">{{__('Publish Status')}}</th>
             <th class="min-w-150px">{{__('Created At')}}</th>
+            <th class="min-w-200px">{{__('Category')}}</th>
             <th class="min-w-150px"><i class="bi bi-eye text-primary fa-2x"></i></th>
             <th class="min-w-200px text-end rounded-end"></th>
         </thead>
@@ -69,6 +70,9 @@
                 </td>
                 <td>
                     {{$blog->created_at->diffForHumans() }}
+                </td>
+                <td>
+                    {{$blog->category ? $blog->category->name : ''}}
                 </td>
                 <td>
                     {{$blog->visits }}

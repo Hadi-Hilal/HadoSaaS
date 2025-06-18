@@ -19,5 +19,9 @@
     "Search In Blogs": "البحث في المدونات",
     "Image": "صورة",
     "Description": "وصف موجز",
-    "Edit Blog": "تعدبل المدونة"
+    "Edit Blog": "تعدبل المدونة",
+    "Blog Categories": "فئات المدونة",
+    "Search In Blog Categories": "البحث في فئات المدونة",
+    "Add New Blog Category": "إضافة فئة جديدة للمدونة",
+    "Category": "الفئة"
 }

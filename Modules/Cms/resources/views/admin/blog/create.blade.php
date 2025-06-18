@@ -52,15 +52,18 @@
         </div>
         <div class="row mb-8">
             <div class="col-xl-3">
-                <div class="fs-6 fw-bold mt-2 mb-3">{{__('Url')}} <span class="text-danger">*</span></div>
+                <div class="fs-6 fw-bold mt-2 mb-3">{{__('Category')}} <span class="text-danger">*</span></div>
             </div>
             <div class="col-xl-9 fv-row">
-                <input type="text" id="gslug" name="gslug" class="form-control form-control-solid mb-3 mb-lg-0"
-                       placeholder="" value="{{old('slug')}}"/>
-                <input type="hidden" name="slug" value="{{old('slug')}}" id="slug">
-                <div class="my-3" id="link">{{old('slug')}}</div>
+                <select name="category_id" class="form-control form-control-solid" required>
+                    <option value="">{{__('Select Category')}}</option>
+                    @foreach($categories as $category)
+                        <option value="{{$category->id}}">{{$category->name}}</option>
+                    @endforeach
+                </select>
             </div>
         </div>
+
         <div class="row mb-8">
             <div class="col-xl-3">
                 <div class="fs-6 fw-bold mt-2 mb-3"><i class="bi bi-translate text-primary mx-1 "></i>{{__('Title')}}
@@ -69,6 +72,18 @@
             <div class="col-xl-9 fv-row">
                 <input type="text" class="form-control form-control-solid" name="title" value="{{old('title')}}"
                        placeholder="{{__('Title')}}"/>
+            </div>
+        </div>
+
+        <div class="row mb-8">
+            <div class="col-xl-3">
+                <div class="fs-6 fw-bold mt-2 mb-3">{{__('Url')}} <span class="text-danger">*</span></div>
+            </div>
+            <div class="col-xl-9 fv-row">
+                <input type="text" id="gslug" name="gslug" class="form-control form-control-solid mb-3 mb-lg-0"
+                       placeholder="" value="{{old('slug')}}"/>
+                <input type="hidden" name="slug" value="{{old('slug')}}" id="slug">
+                <div class="my-3" id="link">{{old('slug')}}</div>
             </div>
         </div>
         <div class="row mb-8">
@@ -129,5 +144,6 @@
                 </div>
             </div>
         </div>
+
     </x-admin.create-card>
 </x-admin-layout>

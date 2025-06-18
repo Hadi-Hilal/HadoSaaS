@@ -73,6 +73,20 @@
             </div>
 
         </div>
+
+        <div class="menu-sub menu-sub-accordion {{ isset($active['blogs_categories'])  ? 'show' : '' }}">
+            <div class="menu-item">
+                <a class="menu-link {{ isset($active['blogs_categories']) ? 'active' : '' }}"
+                   href="{{ route('admin.blogs_categories.index') }}">
+                            <span class="menu-bullet">
+                                <span class="bullet bullet-dot"></span>
+                            </span>
+                    <span class="menu-title">{{ __('Blog Categories') }}</span>
+                </a>
+            </div>
+
+        </div>
+
         <div class="menu-sub menu-sub-accordion {{ isset($active['blogs'])  ? 'show' : '' }}">
             <div class="menu-item">
                 <a class="menu-link {{ isset($active['blogs']) ? 'active' : '' }}"
