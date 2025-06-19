@@ -30,7 +30,7 @@
             <th class="min-w-200px">{{__('Name')}}</th>
             <th class="min-w-200px">{{__('Url')}}</th>
             <th class="min-w-150px">{{__('Created At')}}</th>
-            <th class="min-w-200px text-end rounded-end"></th>
+        {{--            <th class="min-w-200px text-end rounded-end"></th>--}}
         </thead>
         <tbody class="text-gray-600 fw-semibold">
         @foreach($model as $category)
@@ -43,16 +43,16 @@
                 <td>{{$category->name}}</td>
                 <td>{{$category->slug}}</td>
                 <td>{{$category->created_at->diffForHumans() }}</td>
-                <td>
-                    <button class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1"
-                            data-bs-toggle="modal" data-bs-target="#editCategoryModal{{$category->id}}">
-                        <i class="ki-duotone ki-message-edit fs-1">
-                            <span class="path1"></span>
-                            <span class="path2"></span>
-                        </i>
-                    </button>
-                    @include('cms::admin.blog_category.edit', ['blogs_category' => $category, 'modal' => true])
-                </td>
+                {{--                <td>--}}
+                {{--                    <button class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1"--}}
+                {{--                            data-bs-toggle="modal" data-bs-target="#editCategoryModal{{$category->id}}">--}}
+                {{--                        <i class="ki-duotone ki-message-edit fs-1">--}}
+                {{--                            <span class="path1"></span>--}}
+                {{--                            <span class="path2"></span>--}}
+                {{--                        </i>--}}
+                {{--                    </button>--}}
+                {{--                    @include('cms::admin.blog_category.edit', ['blogs_category' => $category, 'modal' => true])--}}
+                {{--                </td>--}}
             </tr>
         @endforeach
         </tbody>

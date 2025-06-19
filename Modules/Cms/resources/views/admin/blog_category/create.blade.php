@@ -1,8 +1,6 @@
 @if(isset($modal) && $modal)
-    @php
-        $langs = config('translatable.locales', ['en']);
-    @endphp
-        <!-- Create Category Modal -->
+
+    <!-- Create Category Modal -->
     <div class="modal fade" id="createCategoryModal" tabindex="-1" aria-labelledby="createCategoryModalLabel"
          aria-hidden="true">
         <div class="modal-dialog">
@@ -14,16 +12,19 @@
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
-                        @foreach($langs as $lang)
-                            <div class="mb-3">
-                                <label for="name_{{$lang}}" class="form-label">{{ __('Name') }} ({{ strtoupper($lang) }}
-                                    )</label>
-                                <input type="text" class="form-control" name="name[{{$lang}}]" required>
-                            </div>
-                        @endforeach
+
                         <div class="mb-3">
-                            <label for="slug" class="form-label">{{ __('Url') }}</label>
-                            <input type="text" class="form-control" name="slug" required>
+                            <label for="name" class="form-label">{{ __('Name') }} <span
+                                    class="text-danger">*</span></label>
+                            <input type="text" class="form-control" name="name" required>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="slug" class="form-label">{{ __('Url') }} <span
+                                    class="text-danger">*</span></label>
+                            <input type="text" class="form-control" id="gslug" name="gslug" required>
+                            <input type="hidden" name="slug" value="{{old('slug')}}" id="slug">
+                            <div class="my-3" id="link">{{old('slug')}}</div>
                         </div>
                     </div>
                     <div class="modal-footer">
