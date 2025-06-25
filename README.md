@@ -1,14 +1,19 @@
 # HadoSaaS
 
-HadoSaaS is a Laravel starter kit designed for rapid development of SaaS and admin-oriented applications. 
-It comes with essential features like modular structure, user roles, settings management, 
+HadoSaaS is a Laravel starter kit designed for rapid development of SaaS and admin-oriented applications.
+It comes with essential features like modular structure, user roles, settings management,
 and more, making it easy to get started with scalable and organized projects.
-It saves for you at least 50 Hr.
+It saves for you at least 70 - 100 Hr.
+
+## Youtube Video
+
+https://youtu.be/wZxniy8CLsM
 
 ## Purpose
 
 The purpose of HadoSaaS is to provide developers with a solid foundation to build powerful SaaS applications.
-With built-in support for user management, settings, and roles, this starter kit saves time by including core functionalities required in most SaaS or admin projects.
+With built-in support for user management, settings, and roles, this starter kit saves time by including core
+functionalities required in most SaaS or admin projects.
 
 ## Key Features
 
@@ -17,6 +22,7 @@ With built-in support for user management, settings, and roles, this starter kit
 - **Settings Module**: Centralized configuration for app-wide settings.
 - **Support**: two langs en & ar
 - **Admin Panel**: the project use metronic admin panel
+
 ## Requirements
 
 - **Laravel**: Built on Laravel 11
@@ -34,8 +40,8 @@ HadoSaaS is built with the following key Laravel packages:
 - **[laravel-localization](https://github.com/mcamara/laravel-localization)**: To support multiple languages in the app.
 - **[image-laravel](https://github.com/Intervention/image)**: For handling and manipulating images.
 - **[Laravel Telescope](https://laravel.com/docs/telescope)**: A powerful debugging assistant for Laravel.
-- **[Laravel Pulse](https://laravel.com/docs/pulse)**: A modern, real-time performance monitoring tool for Laravel applications.
-
+- **[Laravel Pulse](https://laravel.com/docs/pulse)**: A modern, real-time performance monitoring tool for Laravel
+  applications.
 
 ## Getting Started
 

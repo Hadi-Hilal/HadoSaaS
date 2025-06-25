@@ -1,0 +1,24 @@
+{
+    "name": "hadi/img-optimize",
+    "description": "this for images optimize",
+    "type": "library",
+    "autoload": {
+        "psr-4": {
+            "Hadi\\ImgOptimize\\": "src/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Hadi\\ImgOptimize\\Providers\\AppServiceProvider"
+            ]
+        }
+    },
+    "authors": [
+        {
+            "name": "Hadi Hilal",
+            "email": "hadi-hilal@hotmail.com"
+        }
+    ],
+    "require": {}
+}
